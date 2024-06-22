@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MNIST Digit Recognition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>MNIST Digit Recognition</h1>
+        <img src="{{ url_for('static', filename='1_cG6U1qstYDijh9bPL42e-Q.jpg') }}" alt="MNIST Digit Recognition" style="width:30%;">
+        <div class="description">
+            <p>
+                MNIST Digit Recognition adalah sebuah program yang menggunakan model neural network untuk mengenali digit dari gambar yang diunggah. Program ini dibangun menggunakan Python dengan menggunakan TensorFlow dan Keras.
+            </p>
+            <p>
+                Fitur utama program ini adalah kemampuannya untuk memprediksi digit dari gambar yang diunggah pengguna. Anda cukup mengunggah gambar digit (dalam format PNG atau JPG) menggunakan formulir di bawah ini, kemudian program akan memberikan prediksi digit tersebut.
+            </p>
+        </div>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <button type="submit">Upload and Predict</button>
+        </form>
+        {% if prediction is not none %}
+            <h2>Predicted Digit: {{ prediction }}</h2>
+            <img src="{{ image_url }}" alt="Uploaded Image" style="width:200px;">
+        {% endif %}
+    </div>
+</body>
+</html>
